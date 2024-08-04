@@ -1,0 +1,15 @@
+import os
+
+def remove_prefix(directory, prefix):
+    for filename in os.listdir(directory):
+        if filename.startswith(prefix):
+            old_path = os.path.join(directory, filename)
+            new_filename = filename[len(prefix):]  # Remove o prefixo
+            new_path = os.path.join(directory, new_filename)
+            os.rename(old_path, new_path)
+
+if __name__ == "__main__":
+    directory = input("Digite o caminho da pasta com os vídeos: ")
+    prefix = "C:\\Users\\login\\"  # Prefixo a ser removido
+
+    remove_prefix(directory, prefix)
