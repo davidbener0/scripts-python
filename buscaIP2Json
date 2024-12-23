@@ -1,0 +1,23 @@
+import json
+# Caminho para o arquivo JSON carregado
+file_path = 'C://Users/login//Desktop//as.txt'
+
+# Carregar o conteúdo do arquivo
+with open(file_path, 'r') as file:
+    data = json.load(file)
+
+# Filtrar os ip_prefixes com as condições fornecidas
+filtered_ip_prefixes = [
+    prefix['ip_prefix']
+    for prefix in data.get('prefixes', [])
+    if prefix.get('network_border_group') in {'us-east-1', 'GLOBAL'}
+]
+
+filtered_ip_prefixes
+
+unique_ip_prefixes = list(set(filtered_ip_prefixes))
+
+unique_ip_prefixes
+
+for ip in unique_ip_prefixes:
+         print(ip)
